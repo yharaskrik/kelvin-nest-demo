@@ -1,8 +1,11 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
+import { GetMessageService } from './get-message.service';
 
 @Injectable()
 export class AppService {
+  constructor(private getMessageService: GetMessageService) {}
+
   getData(): { message: string } {
-    return { message: "Hello API" };
+    return this.getMessageService.getMessage();
   }
 }
